@@ -1,11 +1,25 @@
-; The beginning of everything
+; This is the bootloader for the kernel 
+[org 0x7c00]
 
-mov ah, 0x0e
-mov al, "X"
-int 0x10
+mov bx, 0x1000
+mov es, bx
+xor bx, bx
 
-hlt
+call disk_load
 
-times 510 - ($ - $$) db 0	; padding so this file is exactly 512 bits (the size of each sector is 512 bits)
-db 0xaa55	; magic number, so BIOS knows this sector is bootable
+mov ax, 0x1000
+mov ds, ax
+mov es, ax
+mov fs, ax
+mov gs, ax
+mov ss, ax
+
+jmp 0x1000:0
+
+%include "print/print_string.asm"
+%include "print/print_hex.asm"
+%include "disk_loader.asm"
+
+times 510 - ($ - $$) db 0	; padding so this file is exactly 512 bits
+dw 0xaa55	; magic number, so BIOS knows this sector is bootable
 
