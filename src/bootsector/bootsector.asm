@@ -18,8 +18,8 @@ mov ss, ax	; stack segment
 
 jmp 0x1000:0x0	; jump to the loaded sector in memory
 
-%include "print/print_string.asm"
-%include "print/print_hex.asm"
+%include "../print/print_string.asm"
+%include "../print/print_hex.asm"
 %include "disk_loader.asm"
 
 times 510 - ($ - $$) db 0	; padding so this file is exactly 512 bits

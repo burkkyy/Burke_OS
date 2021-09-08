@@ -1,3 +1,6 @@
+pprint_hex:
+	call print_new_line
+
 print_hex:
 	pusha
 	mov cx, 0

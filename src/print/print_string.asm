@@ -1,4 +1,7 @@
 ; For printing strings, the pointer to the string in mem will be in BX
+pprint_string:
+	call print_new_line
+
 print_string:
 	pusha
 
@@ -18,7 +21,7 @@ end_print:
 	ret
 
 print_new_line:
-	push ax
+	pusha
 	mov ah, 0x0e
 	
 	; print new line
@@ -30,6 +33,6 @@ print_new_line:
 	int 0x10
 	
 	; return
-	pop ax
+	popa
 	ret
 
