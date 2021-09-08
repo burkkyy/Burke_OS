@@ -32,21 +32,26 @@ disk_load:	; Takes AL as # of sectors to read, and loads it into ES:BS mem locat
 	xor dx, dx
 
 	int 0x13	; BIOS interrupts for disk functions
-	jc disk_error
+	jc disk_error	; check for carry bit
 	
 	pop dx
-	cmp dh, al	; # of sectors read != # of sectors we wanted to read 
+	cmp dh, al	; # of sectors read (dh) != # of sectors we wanted to read (al)
 	je disk_error
 	
 	popa
 	ret
 
 disk_error:
+	; print out error msg
 	mov bx, DISK_ERROR_MSG
 	call print_string
+
+	; print out error code
 	mov dx, ax
 	call print_hex
+	
+	; 'hlt' the cpu (hlt doesnt work IDKKK)
 	jmp $
 
-DISK_ERROR_MSG: db "Error reading disk error code ", 0
+DISK_ERROR_MSG: db "Error reading disk, error code ", 0
 
