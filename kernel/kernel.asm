@@ -24,8 +24,8 @@ call print_new_line
  
 jmp $
 
-%include "print/print_string.asm"
-%include "print/print_hex.asm"
+%include "../bootsector/print/print_string.asm"
+%include "../bootsector/print/print_hex.asm"
 
 KERNEL_LOAD_MSG: db "Kernel loaded!", 0
 
