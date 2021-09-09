@@ -1,12 +1,10 @@
 ; This file prints the values of all the registers to the screen
 print_registers:
 	pusha
-	push dx
-	push bx
+	push dx	; used for hex printing so store its current value on the stack
+	push bx	; used for string printing so store its current value on the stack
 
 	mov bx, PLACEHOLDER
-	
-	mov byte [PLACEHOLDER], "a"
 	call pprint_string
 	mov dx, ax
 	call print_hex
