@@ -4,13 +4,12 @@
 KERNEL_OFFSET equ 0x2000
 FILETABLE_OFFSET equ 0x1000
 
-jmp 0x0000:entry_16bit_real_mode
+jmp 0x0000:enter_16bit_real_mode
 
 [bits 16]
-entry_16bit_real_mode:
+enter_16bit_real_mode:
 	; init the segment registers
 	xor ax, ax
-	mov cs, ax
 	mov ds, ax
 	mov es, ax
 
@@ -20,16 +19,25 @@ entry_16bit_real_mode:
 	
 	; store the boot drive DL in some var
 	mov [BOOT_DRIVE], dl
-	
-	jmp $
 
 	mov bx, REAL_MODE_MSG
 	call pprint_string
 	
+	call switch_to_pm
+
 	jmp $
 
 %include "print/16bit_print.asm"
 %include "print/16bit_print_hex.asm"
+%include "print/32bit_print.asm"
+%include "32bit_GDT.asm"
+%include "32bit_switch.asm"
+
+[bits 32]
+enter_32bit_prot_mode:
+	mov ebx, PROT_MODE_MSG
+	call print_string_pm
+	jmp $
 
 BOOT_DRIVE: db 0	; its a good idea to store it in mem because DL may get overwritten
 REAL_MODE_MSG: db "Entered 16-bit real mode...", 0
