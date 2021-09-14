@@ -14,3 +14,14 @@ run cmd bochs in src/bootsector
 To use qemu:
 run 'make run' in src/bootsector
 
+TO DO:
+	- Move to 32 bit real mode
+	- Add a FAT filesystem
+	- Add a working c cross-compilier (lmao)
+	- Create a calculator app
+	- Create a conways game of life simulator
+	- Create some graphics display
+	- Create a shell to pick which programs to run
+	- Add a ext4 filesystem
+	- Move to 64 bit long mode
+

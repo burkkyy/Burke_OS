@@ -14,10 +14,28 @@
 ; AH	Return Code
 ; AL	Actual Sectors Read Count
 
+; Take DH as # of sectors to read and DL as starting sector
+; Loads sectors continuously into mem at locale ES:BX
 disk_load:	; Takes AL as # of sectors to read, and loads it into ES:BS mem location from drive DL
 	pusha
 	push dx
 	
+	mov ah, 0x02
+	mov al, dh
+	mov ch, 0x00	; These may be passed through as 
+	mov cl, dl	; function args in the future
+	xor dx, dx	
+
+	int 0x13
+	jc disk_error
+
+	pop dx
+	cmp dh, al
+	jne disk_error
+
+	popa
+	ret
+
 	; old code
 	; mov ah, 0x2	; int 0x13/ah=0x2, BIOS will read disk sectors into memory
 	; mov al, 0x1	; # of sectors we want to read
@@ -27,19 +45,19 @@ disk_load:	; Takes AL as # of sectors to read, and loads it into ES:BS mem locat
 	; mov dl, 0x0
 
 	; Cleaner code
-	mov ax, 0x201
-	mov cx, 2
-	xor dx, dx
+	; mov ax, 0x201
+	; mov cx, 2
+	; xor dx, dx
 
-	int 0x13	; BIOS interrupts for disk functions
-	jc disk_error	; check for carry bit
+	; int 0x13	; BIOS interrupts for disk functions
+	; jc disk_error	; check for carry bit
 	
-	pop dx
-	cmp dh, al	; # of sectors read (dh) != # of sectors we wanted to read (al)
-	je disk_error
+	; pop dx
+	; cmp dh, al	; # of sectors read (dh) != # of sectors we wanted to read (al)
+	; je disk_error
 	
-	popa
-	ret
+	; popa
+	; ret
 
 disk_error:
 	; print out error msg

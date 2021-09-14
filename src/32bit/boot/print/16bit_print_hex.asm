@@ -1,9 +1,11 @@
+; This file prints hex values in 16bit code
+; print_hex takes dx as a pointer of the mem locale to print the hex vals of
 pprint_hex:
 	call print_new_line
 
 print_hex:
 	pusha
-	mov cx, 0
+	xor cx, cx
 
 hex_loop:
 	cmp cx, 4
