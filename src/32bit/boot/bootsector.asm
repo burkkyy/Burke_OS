@@ -17,9 +17,16 @@ entry_16bit_real_mode:
 	; init the stack base pointer
 	mov bp, 0x9000
 	mov sp, bp
+	
+	; store the boot drive DL in some var
+	mov [BOOT_DRIVE], dl
+	
+	jmp $
 
 	mov bx, REAL_MODE_MSG
 	call pprint_string
+	
+	jmp $
 
 %include "print/16bit_print.asm"
 %include "print/16bit_print_hex.asm"
