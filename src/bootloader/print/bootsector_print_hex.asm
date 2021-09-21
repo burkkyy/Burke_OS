@@ -1,13 +1,10 @@
-pprint_hex:
-	call print_new_line
-
 print_hex:
 	pusha
-	xor cx, cx	; zero out cx
+	xor cx, cx
 
 hex_loop:
 	cmp cx, 4
-	je end_hex_print
+	je hex_loop_end
 
 	mov ax, dx
 	and ax, 0x000f
@@ -17,18 +14,20 @@ hex_loop:
 	add al, 7
 
 step2:
-	mov bx, hex_string + 5
+	mov bx, HEX_OUT + 5
 	sub bx, cx
 	mov [bx], al
 	ror dx, 4
-	inc cx
+
+	add cx, 1
 	jmp hex_loop
 
-end_hex_print:
-	mov bx, hex_string
+hex_loop_end:
+	mov bx, HEX_OUT
 	call print_string
+
 	popa
 	ret
 
-hex_string: db "0x0000", 0
+HEX_OUT: db "0x0000", 0
 
