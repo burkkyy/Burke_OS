@@ -1,4 +1,4 @@
-# Burke_OS
+# Burke OS
 
 Welcome to my first operating system! 
 Currently it's only a flat binary that runs in 32bit protected mode, but I may 
