@@ -1,27 +1,24 @@
 # Burke_OS
 
 Welcome to my first operating system! 
-Currently it's only a flat binary that runs in 16bit protected mode, 
-but I will eventually move up to 32bit real mode. 
-Maybe even long mode.
+Currently it's only a flat binary that runs in 32bit protected mode, but I may 
+upgrade it to long mode if I can learn how to do that 
 
-To run the os, cd into src/bootsecter and run make.
-Then either use bochs or qemu (qemu is highly recommended).
-
-To use bochs:
-run cmd bochs in src/bootsector
-
-To use qemu:
-run 'make run' in src/bootsector
+To use the os currently, cd into Burke_OS/ and run 'make run'. qemu-i386-x86 is required.
+(Currently doesnt work on real hardware... maybe later)
 
 TO DO:
-	- Move to 32 bit real mode
-	- Add a FAT filesystem
-	- Add a working c cross-compilier (lmao)
-	- Create a calculator app
-	- Create a conways game of life simulator
-	- Create some graphics display
-	- Create a shell to pick which programs to run
-	- Add a ext4 filesystem
-	- Move to 64 bit long mode
-
+	- Have a working screen driver \
+	- Have a working driver for keyboard input/output \
+	- Have a working driver for mouse \
+	- Add drivers for reading/writing to disk \
+	- Add a FAT filesystem \
+	- Add a working c cross-compilier (lmao) \
+	- Create a calculator app \
+	- Create a conways game of life simulator \
+	- Create some graphics display \
+	- Have OS work on real hardware \
+	- Create a shell \
+	- Add a ext4 filesystem \
+	- Move to 64 bit long mode \
+	
