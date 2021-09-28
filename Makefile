@@ -1,5 +1,4 @@
 CC = /home/caleb/Documents/toolchains/i386-elf-11.1.0-Linux-x86_64/bin/i386-elf-gcc
-CC_FLAGS = -c -I src/intf -ffreestanding
 LINKER = /home/caleb/Documents/toolchains/i386-elf-11.1.0-Linux-x86_64/bin/i386-elf-ld
 
 c_source_files = $(wildcard src/kernel/*.c src/drivers/*.c src/impl/*.c)
@@ -23,7 +22,7 @@ obj/kernel_entry.o: src/kernel/kernel_entry.asm
 
 $(c_object_files): $(c_source_files)
 	@mkdir -p $(dir $@) && \
-	$(CC) $(CC_FLAGS) $(patsubst obj/%.o,src/%.c,$@) -o $@
+	$(CC) -c -I src/intf -ffreestanding $(patsubst obj/%.o,src/%.c,$@) -o $@
 
 .PHONY: run
 run: build/os.bin
