@@ -7,7 +7,7 @@ upgrade it to long mode if I can learn how to do that
 To use the os currently, cd into Burke_OS/ and run 'make run'. qemu-i386-x86 is required.
 (Currently doesnt work on real hardware... maybe later)
 
-TO DO:
+TO DO: \
 	- Have a working screen driver \
 	- Have a working driver for keyboard input/output \
 	- Have a working driver for mouse \
