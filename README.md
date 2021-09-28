@@ -4,7 +4,7 @@ Welcome to my first operating system!
 Currently it's only a flat binary that runs in 32bit protected mode, but I may 
 upgrade it to long mode if I can learn how to do that 
 
-To use the os currently, cd into Burke_OS/ and run 'make run'. qemu-i386-x86 is required.
+To use the OS, run 'make run'. qemu-i386-x86 is required.
 (Currently doesnt work on real hardware... maybe later)
 
 Goals: \
