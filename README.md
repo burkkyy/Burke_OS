@@ -20,5 +20,4 @@ Goals: \
 	- Have OS work on real hardware \
 	- Create a shell \
 	- Add a ext4 filesystem \
-	- Move to 64 bit long mode \
-	
+	- Move to 64 bit long mode
