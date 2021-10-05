@@ -1,4 +1,5 @@
 #include "screen.h"
+#include "ports.h"
 
 // Yes, I have create my own char data type
 struct Char {
@@ -79,5 +80,17 @@ void print_string(char* string) {
 
 void print_set_color(uint8_t foreground, uint8_t background) {
 	color = foreground + (background << 4);
+}
+
+int get_offset(int col, int row) { 
+	return 2 * (row * NUM_COLS + col); 
+}
+
+int get_offset_row(int offset) { 
+	return offset / (2 * NUM_COLS);
+}
+
+int get_offset_col(int offset) { 
+	return (offset - (get_offset_row(offset) * 2 * NUM_COLS)) / 2;
 }
 

@@ -19,6 +19,8 @@ or al, 00001000 b 	; Switch on the motor bit
 out dx, al 		; Update DOR of the device.
 */
 
+#include "ports.h"
+
 unsigned char port_byte_in(unsigned short port) {
 	/*
 	A useful C wrapper func that reads a byte from 
