@@ -1,5 +1,5 @@
 #pragma once 
 
 int len(int i);
-void byte_array(int num, char* buff);
+void byte_array(unsigned int num, char* buff);
 

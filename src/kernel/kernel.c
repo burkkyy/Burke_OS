@@ -18,7 +18,7 @@ void main() {
 	char c[0xF];
 	for (int i = 0; i < 0xF; i++) { c[i] = '\0'; }
 	
-	//unsigned int number = 0x3B9AC9FF; // max val
+	//unsigned int number = 0x3FFFFFFF; // max val
 	unsigned int number = 0xFFFFFFFF;
 	byte_array(number, c);
 	print_string(c);
