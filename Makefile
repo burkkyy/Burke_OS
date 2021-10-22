@@ -1,3 +1,4 @@
+# Change these paths to your cross-compilier! Otherwise compiling fails
 CC = /home/caleb/Documents/toolchains/i386-elf-11.1.0-Linux-x86_64/bin/i386-elf-gcc
 LINKER = /home/caleb/Documents/toolchains/i386-elf-11.1.0-Linux-x86_64/bin/i386-elf-ld
 
